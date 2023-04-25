@@ -3,7 +3,7 @@ export interface ICar {
   model: string;
   year: number;
   color: string;
-  status: boolean;
+  status?: false | boolean;
   buyValue: number;
   doorsQty: number;
   seatsQty: number;

@@ -28,7 +28,7 @@ class CarODM {
 
   public async getById(id: string): Promise<ICar | null> {
     if (!isValidObjectId(id)) throw Error('Invalid mongo id');
-    return this.model.findById(id).exec();
+    return this.model.findById(id);
   }
 }
 

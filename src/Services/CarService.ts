@@ -1,6 +1,7 @@
 import Car from '../Domains/Car';
 import ICar from '../Interfaces/ICar';
 import CarsODM from '../Models/CarODM';
+import MotorcycleODM from '../Models/MotorcycleODM';
 
 export default class CarService {
   private createCarDomain(car: ICar | null): Car | null {
@@ -34,4 +35,9 @@ export default class CarService {
     const carUpdated = await carODM.updatedCar(id, car);
     return this.createCarDomain(carUpdated);
   }
+
+  public async delete(id: string) {
+    const motorcycleODM = new MotorcycleODM();
+    await motorcycleODM.delete(id);
+  } 
 }

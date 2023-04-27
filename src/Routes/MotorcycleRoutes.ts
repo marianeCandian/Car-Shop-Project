@@ -1,26 +1,31 @@
 import { Router } from 'express';
-import MotorcyclesController from '../Controllers/MotorcycleController';
+import MotorcycleController from '../Controllers/MotorcycleController';
 
 const MotorRoutes = Router();
 
 MotorRoutes.post(
   '/motorcycles',
-  (req, res, next) => new MotorcyclesController(req, res, next).create(),
+  (req, res, next) => new MotorcycleController(req, res, next).create(),
 );
 
 MotorRoutes.get(
   '/motorcycles/:id',
-  (req, res, next) => new MotorcyclesController(req, res, next).getById(),
+  (req, res, next) => new MotorcycleController(req, res, next).getById(),
 );
 
 MotorRoutes.get(
   '/motorcycles',
-  (req, res, next) => new MotorcyclesController(req, res, next).getAll(),
+  (req, res, next) => new MotorcycleController(req, res, next).getAll(),
 );
 
 MotorRoutes.put(
   '/motorcycles/:id',
-  (req, res, next) => new MotorcyclesController(req, res, next).updatedMotor(),
+  (req, res, next) => new MotorcycleController(req, res, next).updatedMotor(),
+);
+
+MotorRoutes.delete(
+  '/cars/:id',
+  (req, res, next) => new MotorcycleController(req, res, next).delete(),
 );
 
 export default MotorRoutes;

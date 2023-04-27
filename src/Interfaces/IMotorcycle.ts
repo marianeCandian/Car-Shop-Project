@@ -1,6 +1,6 @@
 import IVehicle from './IVehicle';
 
 export default interface IMotorcycle extends IVehicle {
-  category: 'Street' | 'Custim' | 'Trail';
+  category: 'Street' | 'Custom' | 'Trail';
   engineCapacity: number;
 }

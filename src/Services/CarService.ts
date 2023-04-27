@@ -28,4 +28,10 @@ export default class CarService {
     if (!car) throw Error('Car not found');
     return this.createCarDomain(car);
   }
+
+  public async updatedCar(id: string, car: ICar) {
+    const carODM = new CarsODM();
+    const carUpdated = await carODM.updatedCar(id, car);
+    return this.createCarDomain(carUpdated);
+  }
 }

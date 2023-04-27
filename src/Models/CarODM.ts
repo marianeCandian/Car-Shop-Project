@@ -1,12 +1,10 @@
-import { Schema, Model, model, models, isValidObjectId } from 'mongoose';
+import { Schema, isValidObjectId, UpdateQuery } from 'mongoose';
 import ICar from '../Interfaces/ICar';
+import AbstractODM from './AbstractODM';
 
-class CarODM {
-  private schema: Schema;
-  private model: Model<ICar>;
-
+class CarODM extends AbstractODM<ICar> {
   constructor() {
-    this.schema = new Schema<ICar>({
+    const schema = new Schema<ICar>({
       model: { type: String, required: true },
       year: { type: Number, required: true },
       color: { type: String, required: true },
@@ -15,11 +13,7 @@ class CarODM {
       doorsQty: { type: Number, required: true },
       seatsQty: { type: Number, required: true },
     });
-    this.model = models.Cars || model('Cars', this.schema);
-  }
-
-  public async create(car: ICar): Promise<ICar> {
-    return this.model.create({ ...car });
+    super(schema, 'Car');
   }
 
   public async getAllCars(): Promise<ICar[]> {
@@ -29,6 +23,17 @@ class CarODM {
   public async getById(id: string): Promise<ICar | null> {
     if (!isValidObjectId(id)) throw Error('Invalid mongo id');
     return this.model.findById(id);
+  }
+
+  public async updatedCar(id: string, obj: ICar): Promise<ICar | null> {
+    if (!isValidObjectId(id)) {
+      throw Error('Invalid mongo id');
+    }
+    return this.model.findByIdAndUpdate(
+      { _id: id },
+      { ...obj } as UpdateQuery<ICar>,
+      { new: true },
+    );
   }
 }
 

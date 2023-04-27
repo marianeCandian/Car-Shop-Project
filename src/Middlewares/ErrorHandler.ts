@@ -15,7 +15,7 @@ class ErrorHandler {
         res.status(422).json({ message: error.message });
         break;
       default:
-        res.status(500).json({ messagE: error.message });
+        res.status(500).json({ message: error.message });
     }
     next();
   }

@@ -5,10 +5,10 @@ class Motorcycle extends Vehicle {
   private category: string;
   private engineCapacity: number;
 
-  constructor(car: IMotorcycle) {
-    super(car.id, car.model, car.year, car.color, car.buyValue, car.status);
-    this.category = car.category;
-    this.engineCapacity = car.engineCapacity;
+  constructor(moto: IMotorcycle) {
+    super(moto.id, moto.model, moto.year, moto.color, moto.buyValue, moto.status);
+    this.category = moto.category;
+    this.engineCapacity = moto.engineCapacity;
   }
 
   public getCategory() {

@@ -19,7 +19,9 @@ export default class MotorcycleService {
   public async getAllMotorcycles() {
     const motorcycleODM = new MotorcycleODM();
     const allMotorcycles = await motorcycleODM.find();
+    // console.log(allMotorcycles);
     const motorcycleArray = allMotorcycles.map((motorcycle) => this.createMotorDomain(motorcycle));
+    // console.log(motorcycleArray);
     return motorcycleArray;
   }
 
